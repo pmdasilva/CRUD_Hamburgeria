@@ -1,15 +1,19 @@
 from data.data import data_hamburguers
 
-def adding_hamburguers():
-
-    name_hamburguer = str(input('Digite o nome do hamburguer que deseja adicionar:'))
-    price_hamburguer = int(input('Digite o valor do hamburguer: '))
-    
+def adding_hamburguers(name_hamburguer, price_hamburguer):
+    """Adiciona um novo hambúrguer à lista"""
     try:
         data_hamburguers.append({'name': name_hamburguer, 'price': price_hamburguer})
-        return {'name': name_hamburguer, 'price': price_hamburguer}
+        return {
+            "status": "sucesso",
+            "mensagem": "Hambúrguer adicionado com sucesso!",
+            "dados": {'name': name_hamburguer, 'price': price_hamburguer}
+        }
     except ValueError:
-        print('Valor inválido. Por favor, insira um número para o preço do hambúrguer.')
+        return {
+            "status": "erro",
+            "mensagem": "Valor inválido. Por favor, insira um número para o preço do hambúrguer."
+        }
 
 
 def list_humburguers():
